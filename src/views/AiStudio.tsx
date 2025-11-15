@@ -23,11 +23,13 @@ interface AiStudioProps {
 const SPECIAL_TRANSLATION_IMAGES: Record<string, string> = {
   海莉: "/images/presets/hailey.png",
   港大: "/images/presets/hku.png",
+  國泰: "/images/presets/mj.jpg",
 };
 
 const SPECIAL_TRANSLATION_IMAGE_FITS: Record<string, "contain" | "cover"> = {
   海莉: "cover",
   港大: "cover",
+  國泰: "cover",
 };
 
 const SPECIAL_IMAGE_DELAY_MS = 2000;

@@ -118,6 +118,29 @@ Text to translate: "${englishText}"`;
  */
 function createFallbackTranslations(englishText: string): TranslationOption[] {
   const fallbacks: Record<string, TranslationOption[]> = {
+    'cathay': [
+      {
+        id: '1',
+        chinese: '國泰',
+        pronunciation: 'guó tài',
+        explanation: 'Cathay - ancient name for China, meaning national peace and prosperity',
+        strategy: 'meaning'
+      },
+      {
+        id: '2',
+        chinese: '華夏',
+        pronunciation: 'huá xià',
+        explanation: 'Ancient poetic name for China and Chinese civilization',
+        strategy: 'meaning'
+      },
+      {
+        id: '3',
+        chinese: '契丹',
+        pronunciation: 'qì dān',
+        explanation: 'Historical phonetic translation of Cathay from Khitan empire',
+        strategy: 'phonetic'
+      }
+    ],
     'dragon': [
       {
         id: '1',
