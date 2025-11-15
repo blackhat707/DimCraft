@@ -6,7 +6,8 @@ interface ARModel {
     fileName: string;
     name: {
         en: string;
-        zh: string;
+        zh: string;      // Traditional Chinese
+        zhHans?: string; // Simplified Chinese
     };
     imageUrl: string;
 }
@@ -21,7 +22,8 @@ const Play: React.FC = () => {
             fileName: 'Chinese_knotting.usdz',
             name: {
                 en: 'Chinese Knot',
-                zh: '中國結'
+                zh: '中國結',
+                zhHans: '中国结',
             },
             imageUrl: 'https://cdn.shopify.com/s/files/1/0756/3486/8539/files/O1CN01ve66dU1GNQU2kvm1A__2216587900610-0-cib_480x480.jpg?v=1705579996'
         },
@@ -30,7 +32,8 @@ const Play: React.FC = () => {
             fileName: 'Neon.usdz',
             name: {
                 en: 'Neon Sign',
-                zh: '霓虹燈'
+                zh: '霓虹燈',
+                zhHans: '霓虹灯',
             },
             imageUrl: 'https://www.cathaypacific.com/content/dam/focal-point/cx/inspiration/2025/09/HoHK-Hong_Kong_neon_sign-Credit_Elvis_Chung-4.renditionimage.1700.1133.jpg?w=480&h=480&fit=crop'
         },
@@ -39,11 +42,18 @@ const Play: React.FC = () => {
             fileName: 'Cathay_Pacific_Airbus_A330-300.usdz',
             name: {
                 en: 'Cathay Pacific Airbus A330-300',
-                zh: '國泰航空空中巴士 A330-300'
+                zh: '國泰航空空中巴士 A330-300',
+                zhHans: '国泰航空空中巴士 A330-300',
             },
             imageUrl: 'https://images.unsplash.com/photo-1569629743817-70d8db6c323b?w=480&h=480&fit=crop'
         }
     ];
+
+    const getLocalizedModelName = (model: ARModel) => {
+        if (language === 'zhHans' && model.name.zhHans) return model.name.zhHans;
+        if (language === 'zh') return model.name.zh;
+        return model.name.en;
+    };
 
     useEffect(() => {
         // Detect iOS devices
@@ -77,22 +87,10 @@ const Play: React.FC = () => {
         <div className="h-full w-full flex flex-col bg-[var(--color-page-bg)] text-[var(--color-text-primary)] overflow-y-auto">
             <header className="p-6 pb-2 sticky top-0 bg-[var(--color-page-bg)]/80 backdrop-blur-md z-10">
                 <h1 className="text-2xl font-bold text-[var(--color-text-primary)] mb-1">
-                    {language === 'en'
-                        ? 'Play'
-                        : language === 'zhHans'
-                        ? '游玩'
-                        : '遊玩'}
+                    {language !== 'en' ? '遊玩' : 'Play'}
                 </h1>
                 <p className="text-[17px] text-[var(--color-text-secondary)]">
-<<<<<<< Updated upstream
                     {language !== 'en' ? 'AR 體驗' : 'AR Experience'}
-=======
-                    {language === 'en'
-                        ? 'Chinese Knot AR Experience'
-                        : language === 'zhHans'
-                        ? '中国结 AR 体验'
-                        : '中國結 AR 體驗'}
->>>>>>> Stashed changes
                 </p>
             </header>
 
@@ -107,24 +105,14 @@ const Play: React.FC = () => {
                             <div className="w-20 h-20 bg-[var(--color-page-bg)] rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-[var(--color-border)] overflow-hidden">
                                 <img
                                     src={model.imageUrl}
-                                    alt={language !== 'en' ? model.name.zh : model.name.en}
+                                    alt={getLocalizedModelName(model)}
                                     className="w-full h-full object-cover"
                                 />
                             </div>
 
-<<<<<<< Updated upstream
                             <h2 className="text-xl font-bold text-[var(--color-primary-accent)] mb-2">
-                                {language !== 'en' ? model.name.zh : model.name.en}
+                                {getLocalizedModelName(model)}
                             </h2>
-=======
-                        <h2 className="text-xl font-bold text-[var(--color-primary-accent)] mb-2">
-                            {language === 'en'
-                                ? 'Chinese Knot'
-                                : language === 'zhHans'
-                                ? '中国结'
-                                : '中國結'}
-                        </h2>
->>>>>>> Stashed changes
 
                             <p className="text-[var(--color-text-secondary)] text-sm mb-6">
                                 {isIOS ? (
@@ -140,7 +128,6 @@ const Play: React.FC = () => {
 
                             {/* iOS Quick Look Play Button or Download Button */}
                             {isIOS ? (
-<<<<<<< Updated upstream
                                 <div className="space-y-3">
                                     <button
                                         onClick={() => handlePlayNowIOS(model.fileName)}
@@ -172,44 +159,6 @@ const Play: React.FC = () => {
                             ) : (
                                 <button
                                     onClick={() => handleDownloadUSDZ(model.fileName)}
-=======
-                                language === 'en'
-                                    ? 'Tap "Play now!" to experience AR with Quick Look, or download for later use'
-                                    : language === 'zhHans'
-                                    ? '点击「立即游玩」使用 Quick Look 体验 AR，或下载文件稍后使用'
-                                    : '點擊「立即遊玩」使用 Quick Look 體驗 AR，或下載檔案供稍後使用'
-                            ) : (
-                                language === 'en'
-                                    ? 'Download 3D model file for AR experience'
-                                    : language === 'zhHans'
-                                    ? '下载 3D 模型文件以体验 AR'
-                                    : '下載 3D 模型檔案以體驗 AR'
-                            )}
-                        </p>
-
-                        {/* iOS Quick Look Play Button or Download Button */}
-                        {isIOS ? (
-                            <div className="space-y-3">
-                                <button
-                                    onClick={handlePlayNowIOS}
-                                    className="w-full bg-gradient-to-r from-[var(--color-primary-accent)] to-[var(--color-secondary-accent)] hover:from-[#004D4C] hover:to-[#006564] text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 relative flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-[1.02]"
-                                >
-                                    <div className="absolute left-5 w-7 h-7 bg-white/20 rounded-full flex items-center justify-center">
-                                        <svg className="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M8 5v14l11-7z" />
-                                        </svg>
-                                    </div>
-                                    <span className="text-center font-semibold">
-                                        {language === 'en'
-                                            ? 'Play now!'
-                                            : language === 'zhHans'
-                                            ? '立即游玩！'
-                                            : '立即遊玩！'}
-                                    </span>
-                                </button>
-                                <button
-                                    onClick={handleDownloadUSDZ}
->>>>>>> Stashed changes
                                     className="w-full bg-[var(--color-primary-accent)] hover:bg-[var(--color-primary-accent)]/90 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 relative flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-[1.02]"
                                 >
                                     <div className="absolute left-5 w-7 h-7 bg-white/20 rounded-full flex items-center justify-center">
@@ -218,38 +167,11 @@ const Play: React.FC = () => {
                                         </svg>
                                     </div>
                                     <span className="text-center font-semibold">
-                                        {language === 'en'
-                                            ? 'Download AR Model'
-                                            : language === 'zhHans'
-                                            ? '下载 AR 模型'
-                                            : '下載 AR 模型'}
+                                        {language !== 'en' ? '下載 AR 模型' : 'Download AR Model'}
                                     </span>
                                 </button>
-<<<<<<< Updated upstream
                             )}
                         </div>
-=======
-                            </div>
-                        ) : (
-                            <button
-                                onClick={handleDownloadUSDZ}
-                                className="w-full bg-[var(--color-primary-accent)] hover:bg-[var(--color-primary-accent)]/90 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 relative flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-[1.02]"
-                            >
-                                <div className="absolute left-5 w-7 h-7 bg-white/20 rounded-full flex items-center justify-center">
-                                    <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                    </svg>
-                                </div>
-                                <span className="text-center font-semibold">
-                                    {language === 'en'
-                                        ? 'Download AR Model'
-                                        : language === 'zhHans'
-                                        ? '下载 AR 模型'
-                                        : '下載 AR 模型'}
-                                </span>
-                            </button>
-                        )}
->>>>>>> Stashed changes
                     </div>
                 ))}
             </div>
