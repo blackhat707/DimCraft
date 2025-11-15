@@ -109,8 +109,32 @@ const Auth: React.FC<AuthProps> = ({ onClose, defaultMode = 'login' }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 20 }}
-        className="bg-[var(--color-surface)] rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto"
+        className="bg-[var(--color-surface)] rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto relative"
       >
+        {/* Close Button */}
+        {onClose && (
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 p-2 rounded-full hover:bg-[var(--color-page-bg)] transition-colors z-10"
+            aria-label="Close"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        )}
+
         <div className="p-8">
           {/* Header */}
           <div className="text-center mb-8">
