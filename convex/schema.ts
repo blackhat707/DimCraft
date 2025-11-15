@@ -3,8 +3,11 @@ import { v } from "convex/values";
 import { authTables } from "@convex-dev/auth/server";
 
 // LocalizedString schema for multilingual content
+// `zh` stores Traditional Chinese, `zhHans` (optional) stores Simplified Chinese,
+// and `en` stores English.
 const localizedString = v.object({
   zh: v.string(),
+  zhHans: v.optional(v.string()),
   en: v.string(),
 });
 
