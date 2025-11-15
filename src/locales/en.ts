@@ -239,7 +239,7 @@ export const en = {
     textLabContactMessageTemplate: 'Hello {artisan}, I just created this seal design: "{prompt}". Could we explore making a real piece together?',
 
     // Authentication
-    authWelcome: 'Welcome to CraftscapeHK',
+    authWelcome: 'Welcome to DimCraftHK',
     authWelcomeSubtitle: 'Discover and connect with Hong Kong\'s traditional artisans',
     authLoginTitle: 'Sign In',
     authRegisterTitle: 'Create Account',

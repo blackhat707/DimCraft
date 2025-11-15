@@ -289,7 +289,7 @@ export const MESSAGE_THREADS: MessageThread[] = [
       {
         id: "MSG-001-3",
         sender: "customer",
-        originalText: "<system class=\"payment-alert\">Craftscape Pay ✅\nTransaction ID: CSP-9285\nDeposit HK$2,000 received via platform.</system>",
+        originalText: "<system class=\"payment-alert\">DimCraft Pay ✅\nTransaction ID: CSP-9285\nDeposit HK$2,000 received via platform.</system>",
         language: "en",
         timestamp: "下午 3:42"
       },

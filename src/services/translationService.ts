@@ -2,7 +2,7 @@
 import type { TranslationOption } from '../types/types';
 
 const GOOGLE_AI_API_KEY = import.meta.env.VITE_GOOGLE_AI_API_KEY;
-const GEMINI_API_BASE_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent';
+const GEMINI_API_BASE_URL = 'https://wc57jr5ava.execute-api.us-east-2.amazonaws.com/v1/gemini';
 
 interface GeminiResponse {
   candidates: Array<{
@@ -62,7 +62,7 @@ Text to translate: "${englishText}"`;
       }]
     };
 
-    const response = await fetch(`${GEMINI_API_BASE_URL}?key=${GOOGLE_AI_API_KEY}`, {
+    const response = await fetch(`${GEMINI_API_BASE_URL}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

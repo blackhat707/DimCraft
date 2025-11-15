@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "CraftscapeHK Complete Data Upload"
+echo "DimCraftHK Complete Data Upload"
 echo "================================="
 echo ""
 

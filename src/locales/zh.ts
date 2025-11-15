@@ -235,7 +235,7 @@ export const zh = {
     textLabContactMessageTemplate: '師傅您好，我剛剛創作了這個印章設計：「{prompt}」，想和您討論實體化的可能性。',
 
     // Authentication
-    authWelcome: '歡迎來到 CraftscapeHK',
+    authWelcome: '歡迎來到 DimCraftHK',
     authWelcomeSubtitle: '探索香港傳統工藝，與匠人面對面',
     authLoginTitle: '登入',
     authRegisterTitle: '建立帳戶',

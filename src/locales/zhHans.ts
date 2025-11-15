@@ -56,7 +56,7 @@ export const zhHans: typeof zh = {
   languageChinese: "中文",
 
   // Authentication
-  authWelcome: "欢迎来到 CraftscapeHK",
+  authWelcome: "欢迎来到 DimCraftHK",
   authWelcomeSubtitle: "探索香港传统工艺，与匠人面对面",
   authLoginTitle: "登录",
   authRegisterTitle: "创建账户",

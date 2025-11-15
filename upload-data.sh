@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Starting CraftscapeHK data upload..."
+echo "Starting DimCraftHK data upload..."
 echo ""
 
 echo "Clearing existing data..."
