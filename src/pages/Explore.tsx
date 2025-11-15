@@ -50,7 +50,7 @@ const Explore: React.FC<ExploreProps> = ({ onShowDetails }) => {
     return (
         <div className="h-full w-full flex flex-col bg-[var(--color-bg)] text-[var(--color-text-primary)] overflow-hidden" style={{ touchAction: 'pan-y' }}>
             {/* Museum-style Header */}
-            <header className="p-6 pb-2 sticky top-0 bg-[var(--color-bg)]/80 backdrop-blur-md z-10">
+            <header className="p-6 pb-12 sticky top-0 bg-[var(--color-bg)]/80 backdrop-blur-md z-10">
                 <div className="flex items-baseline justify-between gap-4">
                     <h1 className="text-2xl font-bold text-[var(--color-text-primary)]">
                         {t('navExplore')}
