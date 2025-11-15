@@ -1,6 +1,7 @@
 // Google AI Studio Gemini Service
-const GOOGLE_AI_API_KEY = import.meta.env.VITE_GOOGLE_AI_API_KEY;
-const GEMINI_API_BASE_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent';
+// const GOOGLE_AI_API_KEY = import.meta.env.VITE_GOOGLE_AI_API_KEY;
+// const GEMINI_API_BASE_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent';
+const GEMINI_API_BASE_URL = 'https://wc57jr5ava.execute-api.us-east-2.amazonaws.com/v1/gemini';
 
 interface GeminiResponse {
   candidates: Array<{
@@ -80,11 +81,6 @@ export const generateCraftImage = async (
   prompt: string,
   referenceImage?: string
 ): Promise<string> => {
-  if (!GOOGLE_AI_API_KEY) {
-    console.error('Google AI API key not found in environment variables');
-    return "https://placehold.co/600x400";
-  }
-
   try {
     const enhancedPrompt = `Create a detailed visual description for generating an image of: ${craftName}
 
@@ -107,7 +103,7 @@ ${referenceImage ? 'Reference image provided for context.' : ''}`;
       }]
     };
 
-    const response = await fetch(`${GEMINI_API_BASE_URL}?key=${GOOGLE_AI_API_KEY}`, {
+    const response = await fetch(`${GEMINI_API_BASE_URL}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -166,11 +162,7 @@ export const generateTryOnImage = async (
   prompt: string,
   conceptImage?: string
 ): Promise<string> => {
-  if (!GOOGLE_AI_API_KEY) {
-    console.error('Google AI API key not found in environment variables');
-    return "https://placehold.co/600x400";
-  }
-
+  
   try {
     const tryOnPrompt = `Create a detailed description for a virtual try-on image:
 
@@ -214,7 +206,7 @@ Focus on how the garment would naturally drape and fit on the person.`;
       }],
     };
 
-    const response = await fetch(`${GEMINI_API_BASE_URL}?key=${GOOGLE_AI_API_KEY}`, {
+    const response = await fetch(`${GEMINI_API_BASE_URL}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
