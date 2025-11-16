@@ -67,7 +67,7 @@ const Profile: React.FC<ProfileProps> = ({ onToggleArtisanMode }) => {
   // Use Convex query to fetch crafts when needed
   const convexCrafts = useQuery(api.data.getCrafts);
   const isLoading = convexCrafts === undefined;
-  
+
   // Map Convex data to frontend types
   const allCrafts = convexCrafts?.map(craft => ({
     id: craft.craftId,
@@ -155,7 +155,7 @@ const Profile: React.FC<ProfileProps> = ({ onToggleArtisanMode }) => {
     <div className="h-full w-full flex flex-col bg-[var(--color-bg)] overflow-y-auto">
       {/* Auth Modal */}
       {showAuthModal && <Auth onClose={() => setShowAuthModal(false)} />}
-      
+
       {/* Logout Confirmation Modal */}
       {showLogoutConfirm && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
@@ -292,18 +292,42 @@ const Profile: React.FC<ProfileProps> = ({ onToggleArtisanMode }) => {
           </h2>
           <div className="relative flex bg-[var(--color-button-bg)] p-1 rounded-xl">
             <button
+              onClick={() => setLanguage("en")}
+              className={`relative w-full py-3 rounded-lg text-sm font-semibold transition-colors duration-300 z-10 ${language === "en" ? "" : "text-[var(--color-text-inactive)]"
+                }`}
+              style={
+                language === "en"
+                  ? {
+                    color:
+                      theme === "dark"
+                        ? "var(--color-text-secondary)"
+                        : "var(--color-text-black)",
+                  }
+                  : undefined
+              }
+            >
+              {language === "en" && (
+                <motion.div
+                  layoutId="languageBubble"
+                  className="absolute inset-0 bg-[var(--color-surface)] rounded-lg ios-shadow"
+                  style={{ borderRadius: "0.5rem" }}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                />
+              )}
+              <span className="relative">English</span>
+            </button>
+            <button
               onClick={() => setLanguage("zh")}
-              className={`relative w-full py-3 rounded-lg text-sm font-semibold transition-colors duration-300 z-10 ${
-                language === "zh" ? "" : "text-[var(--color-text-inactive)]"
-              }`}
+              className={`relative w-full py-3 rounded-lg text-sm font-semibold transition-colors duration-300 z-10 ${language === "zh" ? "" : "text-[var(--color-text-inactive)]"
+                }`}
               style={
                 language === "zh"
                   ? {
-                      color:
-                        theme === "dark"
-                          ? "var(--color-text-secondary)"
-                          : "var(--color-text-black)",
-                    }
+                    color:
+                      theme === "dark"
+                        ? "var(--color-text-secondary)"
+                        : "var(--color-text-black)",
+                  }
                   : undefined
               }
             >
@@ -319,17 +343,16 @@ const Profile: React.FC<ProfileProps> = ({ onToggleArtisanMode }) => {
             </button>
             <button
               onClick={() => setLanguage("zhHans")}
-              className={`relative w-full py-3 rounded-lg text-sm font-semibold transition-colors duration-300 z-10 ${
-                language === "zhHans" ? "" : "text-[var(--color-text-inactive)]"
-              }`}
+              className={`relative w-full py-3 rounded-lg text-sm font-semibold transition-colors duration-300 z-10 ${language === "zhHans" ? "" : "text-[var(--color-text-inactive)]"
+                }`}
               style={
                 language === "zhHans"
                   ? {
-                      color:
-                        theme === "dark"
-                          ? "var(--color-text-secondary)"
-                          : "var(--color-text-black)",
-                    }
+                    color:
+                      theme === "dark"
+                        ? "var(--color-text-secondary)"
+                        : "var(--color-text-black)",
+                  }
                   : undefined
               }
             >
@@ -343,32 +366,7 @@ const Profile: React.FC<ProfileProps> = ({ onToggleArtisanMode }) => {
               )}
               <span className="relative">简体中文</span>
             </button>
-            <button
-              onClick={() => setLanguage("en")}
-              className={`relative w-full py-3 rounded-lg text-sm font-semibold transition-colors duration-300 z-10 ${
-                language === "en" ? "" : "text-[var(--color-text-inactive)]"
-              }`}
-              style={
-                language === "en"
-                  ? {
-                      color:
-                        theme === "dark"
-                          ? "var(--color-text-secondary)"
-                          : "var(--color-text-black)",
-                    }
-                  : undefined
-              }
-            >
-              {language === "en" && (
-                <motion.div
-                  layoutId="languageBubble"
-                  className="absolute inset-0 bg-[var(--color-surface)] rounded-lg ios-shadow"
-                  style={{ borderRadius: "0.5rem" }}
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                />
-              )}
-              <span className="relative">English</span>
-            </button>
+
           </div>
         </div>
 
@@ -379,19 +377,18 @@ const Profile: React.FC<ProfileProps> = ({ onToggleArtisanMode }) => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as ProfileTab)}
-                className={`relative w-full py-3 rounded-lg text-sm font-semibold transition-colors duration-300 z-10 ${
-                  activeTab === tab.id
+                className={`relative w-full py-3 rounded-lg text-sm font-semibold transition-colors duration-300 z-10 ${activeTab === tab.id
                     ? ""
                     : "text-[var(--color-text-inactive)]"
-                }`}
+                  }`}
                 style={
                   activeTab === tab.id
                     ? {
-                        color:
-                          theme === "dark"
-                            ? "var(--color-text-secondary)"
-                            : "var(--color-text-black)",
-                      }
+                      color:
+                        theme === "dark"
+                          ? "var(--color-text-secondary)"
+                          : "var(--color-text-black)",
+                    }
                     : undefined
                 }
               >
@@ -421,9 +418,8 @@ const Profile: React.FC<ProfileProps> = ({ onToggleArtisanMode }) => {
                 favoriteCrafts.map((craft, index) => (
                   <motion.div
                     key={craft.id}
-                    className={`${
-                      bentoLayoutClasses[index % bentoLayoutClasses.length]
-                    } museum-card overflow-hidden aspect-square group`}
+                    className={`${bentoLayoutClasses[index % bentoLayoutClasses.length]
+                      } museum-card overflow-hidden aspect-square group`}
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.98 }}
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
@@ -558,11 +554,10 @@ const Profile: React.FC<ProfileProps> = ({ onToggleArtisanMode }) => {
                       key={face.id}
                       type="button"
                       onClick={() => handleFaceActivate(face.id)}
-                      className={`border rounded-xl overflow-hidden text-left transition-all duration-200 ${
-                        isActive
+                      className={`border rounded-xl overflow-hidden text-left transition-all duration-200 ${isActive
                           ? "border-[var(--color-primary-accent)] shadow-lg shadow-[var(--color-primary-accent)]/20 scale-[1.01]"
                           : "border-[var(--color-border)] hover:border-[var(--color-primary-accent)]/60"
-                      }`}
+                        }`}
                     >
                       <img
                         src={face.imageUrl}
