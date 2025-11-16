@@ -1,7 +1,7 @@
 # DimCraft
 
 ## Live Demo
-**Try our app on [DimCraft](http://cathay-dimcraft.s3-website.us-east-2.amazonaws.com/)!**
+**Try our app on [DimCraft](https://d33owmkv3xvucj.cloudfront.net/)!**
 
 ## Inspiration  
 Hong Kong’s traditional crafts—such as **hand-carved mahjong tiles, painted porcelain, cheongsam, and neon sign**—are fading due to shrinking markets and an aging artisan community. 
